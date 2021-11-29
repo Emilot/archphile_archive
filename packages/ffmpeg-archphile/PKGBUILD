@@ -1,0 +1,123 @@
+# Maintainer: Mike Andonov <info@archphile.org>
+# Website: http://archphile.org
+# Based on ffmpeg-headless from AUR made by the following people
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Paul Mattal <paul@archlinux.org>
+
+_pkgname=ffmpeg
+pkgname=ffmpeg-archphile
+pkgver=4.2.3
+pkgrel=1
+epoch=1
+pkgdesc='The FFmpeg media toolkit optimized for server (headless) systems'
+arch=('armv7h' 'aarch64' 'x86_64')
+url='http://ffmpeg.org/'
+license=('GPL3')
+depends=('bzip2' 'glibc' 'gnutls' 'gsm'
+         'lame' 'libmodplug'
+         'libtheora' 'libxml2'
+         'opus'
+         'xz' 'zlib'
+         'libvorbis.so'
+         'rtmpdump')
+makedepends=('yasm' 'git')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libswscale.so' 'ffmpeg')
+conflicts=('ffmpeg')
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0)
+sha256sums=(SKIP)
+
+
+pkgver() {
+  cd ffmpeg
+
+  git describe --tags | sed 's/^n//'
+}
+
+prepare() {
+  cd ffmpeg
+
+  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+}
+
+build() {
+  cd ffmpeg
+
+  [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
+ 
+ ./configure \
+    --prefix='/usr' \
+    --disable-debug \
+    --disable-static \
+    --disable-stripping \
+    --disable-vdpau \
+    --disable-xlib \
+    --disable-sdl2 \
+    --disable-htmlpages \
+    --disable-ffplay \
+    --disable-ladspa \
+    --disable-libaom \
+    --disable-libass \
+    --disable-libdav1d \
+    --disable-libfreetype \
+    --disable-libjack \
+    --disable-fontconfig \
+    --disable-libiec61883 \
+    --disable-libpulse \
+    --disable-libsoxr \
+    --disable-libssh \
+    --disable-libvidstab \
+    --disable-libwebp \
+    --disable-nvenc \
+    --disable-nvdec \
+    --disable-omx \
+    --disable-libxcb \
+    --disable-libopenjpeg \
+    --disable-libx264 \
+    --disable-libx265 \
+    --disable-libv4l2 \
+    --disable-libopencore_amrnb \
+    --disable-libopencore_amrwb \
+    --disable-libdrm \
+    --disable-libspeex \
+    --disable-libbluray \
+    --disable-libfribidi \
+    --disable-libwebp \
+    --disable-filters \
+    --disable-parsers \
+    --disable-indevs \
+    --disable-outdevs \
+    --disable-encoders \
+    --disable-libxvid \
+    --disable-libvpx \
+    --disable-vaapi \
+    --disable-vdpau \
+    --disable-gmp \
+    --enable-decoders \
+    --enable-avresample \
+    --enable-gnutls \
+    --enable-gpl \
+    --enable-libgsm \
+    --enable-libmodplug \
+    --enable-libmp3lame \
+    --enable-swresample \
+    --enable-libopus \
+    --enable-libtheora \
+    --enable-libvorbis \
+    --enable-libxml2 \
+    --enable-shared \
+    --enable-version3 \
+    --enable-librtmp \
+    --enable-runtime-cpudetect
+
+
+  make
+}
+
+package() {
+  make DESTDIR="${pkgdir}" -C ffmpeg install install-man
+}

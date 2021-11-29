@@ -1,0 +1,1 @@
+ACTION=="add|change", KERNEL=="sd[b-z]", ATTR{queue/rotational}=="1", RUN+="/usr/bin/hdparm -S 180 /dev/%k"

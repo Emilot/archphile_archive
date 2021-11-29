@@ -1,0 +1,35 @@
+# Maintainer: Mike Andonov <info@archphile.org>
+# Website: http://archphile.org
+# Based on libupnpp from AUR made by the following people:
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: Tristelune <tristelune@archlinux.info>
+
+pkgname=libnpupnp-archphile
+_pkgname=libnpupnp
+pkgver=4.0.7
+pkgrel=1
+pkgdesc="C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp"
+url="https://www.lesbonscomptes.com//upmpdcli/libupnpp-refdoc/libupnpp-ctl.html"
+arch=(armv7h aarch64)
+license=(BSD)
+depends=(expat)
+source=("http://www.lesbonscomptes.com/upmpdcli/downloads/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('da67d4c258d139d476af6b800926cd9cd09ba17d9e9fcfaebe3fb98241b32790')
+
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  ./autogen.sh
+}
+
+build(){
+    cd "${_pkgname}-${pkgver}"
+    ./configure --prefix=/usr
+    make
+}
+
+package(){
+    cd "${_pkgname}-${pkgver}"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}

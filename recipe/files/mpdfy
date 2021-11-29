@@ -1,0 +1,14 @@
+#!/bin/bash
+# this script disables squeezelite and enables mpd and mympd
+#
+
+systemctl disable squeezelite
+systemctl stop squeezelite
+
+systemctl enable mpd mympd
+systemctl start mpd mympd
+
+sed '/taskset -c -a -p 1 $(pidof squeezelite)/c\#taskset -c -a -p 1 $(pidof squeezelite)' -i /usr/bin/archphile-optimize
+sed '/#taskset -c -a -p 1 $(pidof mpd)/c\taskset -c -a -p 1 $(pidof mpd)' -i /usr/bin/archphile-optimize
+
+archphile-optimize

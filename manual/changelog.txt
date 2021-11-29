@@ -1,0 +1,105 @@
+
+V 0.13.7 - 2020-05-13
+
+- fixed 2 minor typos
+
+------------------------
+V 0.13.6 - 2020-05-11
+
+- Fixed a typo in upmpdcli section
+
+------------------------
+V 0.13.5 - 2020-04-19
+
+- Revised I2S DAC section
+
+------------------------
+V 0.13.4 - 2020-04-17
+
+- revised for RPI4 support
+
+------------------------
+V 0.13.3 - 2020-04-13
+
+- revised faq
+
+------------------------
+V 0.13.2 - 2020-04-11
+
+- updated faq
+
+------------------------
+V 0.13.1 - 2020-04-10
+
+- fixed a typo
+- revised faq
+
+------------------------
+V 0.13 - 2020-04-10
+
+- major update for compatibility with 1.19 beta
+
+------------------------
+V 0.12.12 - 2019-06-19
+
+- fixed 11.1.3 and 11.2.3 headlines
+- added a parenthesis in mpd-archphile-sacd section
+
+------------------------
+V 0.12.11 - 2019-03-25
+
+- modified (wrong) content of hd-idle section
+
+------------------------
+V 0.12.10 - 2019-02-20
+
+- fixed the penguin.eu link in webradios section
+
+------------------------
+V 0.12.9 - 2019-01-29
+
+- corrected typos in FAQ section
+
+------------------------
+V 0.12.8 - 2018-09-18
+
+- corrected ntp command in page 6
+
+------------------------
+V 0.12.7 - 2018-09-17
+
+- minor changes in order to be compliant with the new website
+- added a note on bluetooth section
+
+------------------------
+V 0.12.6 - 2018-07-23
+
+- added ffmpeg note in tidal section
+
+------------------------
+V 0.12.5 - 2018-07-08
+
+- fixed typos in roonbridge section
+
+------------------------
+V 0.12.4 - 2018-06-09
+
+- modified faq section (forums)
+- modified date format
+
+------------------------
+V 0.12.3 - 2018-06-03
+
+- added a paragraph in webradio section
+
+------------------------
+V 0.12.2 - 2018-05-28
+
+- added paragraph about forums in FAQ
+
+------------------------
+V 0.12.1 - 2018-05-28
+
+- added a paragraph for greek webradios (ch. 12.3)
+
+------------------------

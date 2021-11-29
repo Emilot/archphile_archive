@@ -1,0 +1,216 @@
+Archphile Raspberry Pi Changelog
+
+10/04/2020 - 1.19 beta - codename Corona
+------------------------------------------
+- updated to latest ArchlinuxARM
+- updated to custom kernel 4.19.113
+- updated to MPD 0.21.22
+- updated to latest MPD fork with SACD support (untested)
+- replaced YMPD with myMPD 6.2.3
+- updated to latest available librespot (spotify) from github
+- updated to latest upmpdcli 1.4.7 (tidal/qobuz etc were not tesed)
+- updated to latest roonbridge 1.0.171 (untested)
+- updated to squeezelite 1.9.2.1165 (and custom scripts to enable/disable it)
+- updated to latest webradios pls files taken from moodeaudio project
+- updated/revised various optimizations
+- updated/revised I2S supported DACs in config.txt
+- removed local cover art support
+
+26/05/2018 - 0.99.73 alpha
+-------------------------------
+- updated to latest ArchlinuxARM
+- updated to MPD 0.20.20
+- updated to latest YMPD (superbfg9 repo)
+- updated to latest librespot (fixes connections issues)
+- rebuilt upmpdcli package in order to fuly support tidal
+- updated latest roonbridge package (not installed by default)
+- added squeezelite support (for testing purposes - to be covered by the manual at a later stage)
+
+
+12/04/2018 - 0.99.72 alpha
+-------------------------------
+- updated to linux kernel 4.14.33
+- updated to lates YMPD (notandy repository)
+- updated to upmpdcli 1.2.16
+- applied various tweaks (isolated cpus, mpd set to specific core etc..)
+
+
+20/03/2018 - 0.99.71 beta
+-------------------------------
+- added raspberry pi 3 B+ support
+- fully updated ArchlinuxARM
+- updated to new MPD 0.20.18 and latest git MPD sacd version
+- updated to latest YMPD
+- added I2S dac support for the majority of DACS found in Raspberry Pi kernel
+- updated to latest librespot and other Archphile packages
+ 
+
+11/09/2017 - 0.99.6 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- updated to MPD 0.20.10 (apart from the native dsd package that remains in MPD 0.19.19)- I2S dac support for the majority of DACS found in Raspberry Pi kernel
+- updated to latest upmpdcli
+- added spotify premium support using Librespot
+- added roon bridge support
+- applied various Optimizations
+
+
+01/03/2016 - 0.99.4c beta
+-------------------------------
+- reverted back to official 4.1.18 kernel from ArchlinuxARM
+- added i2c-tools
+
+
+28/02/2016 - 0.99.4b beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- updated to custom 4.1.18 kernel - fixes extra 24db hifiberry dac+ at when volume set to 100%
+- updated to shairport-sync 2.8
+
+
+21/02/2016 - 0.99.4 beta
+-------------------------------
+- updated to custom patched 4.1.17 linux kernel
+- updated to latest MPD 0.19.12
+- updated to latest YMPD with extra patches (fix for folders shown as empty - remember last database folder position - dirble API Key)
+- eplaced shairport with shairport-sync
+- added bselect command that configures mpd.conf for various embedded boards
+- added dbackup/drestore commands to backup/restore MPD database
+- added option to limit MPD in one core
+- added Samba capabilities - USB disks can be shared in local network
+- added USB sleep support
+- added brutefir support (playground repository)
+- added mpd-archphile-minimal (playground repository)
+- added mpd-archphile-sacd
+- added alsacap
+
+
+13/03/2015 - 0.99.3 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- added raspberry pi 2 support
+- added i2s DAC configuration tool (i2select)
+- updated to MPD 0.19.9
+- added ffmpeg and soxr support
+- updated to latest shairport
+- added iocharset=utf8 option in fstab for samba/cifs shares
+- added wireless tweaking options 
+- added networking tweaking options 
+- disabled various unneeded modules 
+- changed default systemd target
+- temporarily fixed mpd.service warnings (ControlGroup, ControlGroupAttribute)
+- added support for local cover art using mongoose web server
+
+
+26/10/2014- 0.99.1 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- added upmpdcli (upnp/dlna support) 
+- added shairport (airplay support)
+- added i2s DAC support
+- updated to MPD 0.19.1 
+- modified MPD niceness to -16
+- updated to ympd 1.2.3
+- dropped support of mpd-archphile-ffmpeg
+- disabled on board sound card
+- updated webradios
+- various minor changes
+
+
+15/09/2014 - 0.99 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- added Raspberry Pi B+ supporrt
+- reverted back to ArchlinuxARM kernel package
+- updated to MPD 0.18.14
+- updated to YMPD 1.2.2
+- disabled systemd-networkd and systemd-resolved currently enabled by default in ArchlinuxARM
+- switched to netctl for network management for dhcp/static/wireless connections
+- updated webradios
+- added startup script to unmute DACs and set volume to 100%
+- disabled systemd-timesyncd
+- blacklisted ipv6 module
+- unified unmute-archphile and archphile-optimize packages
+
+
+11/05/2014 - 0.25 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- updated firmware with SKIP_BACKUP=1 rpi-update
+- removed FIQ_FSM options from /boot/cmdline.txt as they are enabled by default
+- removed CMA options from /boot/config.txt
+- updated to ympd-archphile to 1.2.1
+- modified fstab shares examples to mount read-only
+
+
+17/04/2014 - 0.23 beta
+-------------------------------
+- added dhcpcd for dhcp network configuration(fixes unknown hostname in routers and high cpu usage with dhcp) - systemd-networkd to be used only for static
+- updated MPD to 0.18.10
+- updated all Archphile packages apart from linux kernel and firmware
+- added mpd-archphile-ffmpeg
+- removed man-db
+
+
+11/04/2014 - 0.21.1 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- fixed ntfs usb disk support
+
+
+10/04/2014 - 0.21 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- cleaned up and freed up space
+- updated firmware with SKIP_BACKUP=1 BRANCH=next rpi-update (new USB fixes - you need to apply fix number 2)
+- added wicd for wireless configuration (experimental)
+- modified Archphile repository url in /etc/pacman.conf
+- updated ympd-archphile package
+
+
+28/03/2014 - 0.19 beta
+-------------------------------
+- moved from netctl to systemd-networkd for network configuration (fixes slow shutdown)
+- disabled ipv6
+- removed the usbhid fix because (need to manually apply fix number 2)
+- fixed governor command in /usr/bin/archphile-optimize
+
+
+27/03/2014 - 0.17 beta
+-------------------------------
+- updated to latest ArchlinuxARM
+- updated mpd-archphile package including niceness -19
+- updated firmware with BRANCH=next rpi-update (various FIQ fixes)
+- unbounded usb devices from USBHID - fixes “FIQ Reported NYET” problems in many cases (you have to boot with USB dac plugged in)
+- updated to new YMPD based on modified PKGBUILD
+
+
+19/03/2014 - 0.15 beta
+-------------------------------
+- updated to latest Archlinux ARM
+- added support for on board sound card - tested only through the analog jack
+- added mpd-archphile with the following options:
+1. includes default archphile mpd.conf configuration (now with on board card’s options included)
+2. niceness -19 for mpd process set directly from mpd systemd service
+3. lighter - disabled additional mpd configuration options (see repo page for further information)
+- replaced ympd-git with ympd-archphile
+- added YMPD 1.2, based on mongoose, with playlist support and search capabilities - runs on port 80 by default
+- added rpi-update-git package and removed manually installed /usr/bin/rpi-update
+- added support for external hfs disks
+
+
+12/03/2014 - 0.13 beta
+-------------------------------
+- updated to latest Archlinux ARM
+- fixed wrong /etc/fstab entry for /dev/root
+- modified limits for audio group in /etc/security/limits.conf
+- added Archphile repository in /etc/pacman.conf
+- updated to mpd-archphile from Archphile repository
+- added -19 priority to mpd proccess (modified systemd service)
+- updated to latest firmware with BRANCH=next rpi-update
+- removed unneeded packages (dependencies of previous mpd) with pacman -Rnsc $(pacman -Qtdq)
+
+
+10/03/2014 - 0.1 beta
+-------------------------------
+- initial release

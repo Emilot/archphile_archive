@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# This script helps you choose and configure your desired i2s dac or revert to usb dac configuration which 
+# is the default in Archphile.
+
+clear
+red='\e[0;31m'
+NC='\e[0m'
+echo -e "${red}I2s Dac Configuration Tool V2.0${NC}"
+echo -e "${red}---------------------------${NC}"
+echo -e " "
+PS3='Please select the i2s dac you want to configure: '
+options=("Hifiberry" "Hifiberry Plus" "Hifiberry Digi" "Iqaudio" "Iqaudio Plus" "Mamboberry" "Usb Dac Configuration (Default)" "Update config.txt" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+            "Hifiberry")
+            cp /opt/i2select/config.txt.orig /boot/config.txt
+            cp /opt/i2select/unmute.orig /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.i2s /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
+            exit
+            ;;
+            "Hifiberry Plus")
+            cp /opt/i2select/config.txt.orig /boot/config.txt
+            cp /opt/i2select/unmute.boost /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.i2s /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
+            echo -e "${red}Volume set to 0db and Playback Boost to 0%...${NC}"
+            echo
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
+            exit
+            ;;
+            "Hifiberry Digi")
+            cp /opt/i2select/config.txt.orig /boot/config.txt
+            cp /opt/i2select/mpd.conf.i2s /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=hifiberry-digi/s//device_tree_overlay=hifiberry-digi/' /boot/config.txt
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
+	    exit
+	    ;;
+	    "Iqaudio")
+            cp /opt/i2select/config.txt.orig /boot/config.txt
+            cp /opt/i2select/unmute.orig /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.i2s /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=iqaudio-dac/s//device_tree_overlay=iqaudio-dac/' /boot/config.txt
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"      
+	    exit
+	    ;;
+	    "Iqaudio Plus")
+	    cp /opt/i2select/config.txt.orig /boot/config.txt
+	    cp /opt/i2select/unmute.boost /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.i2s /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=iqaudio-dacplus/s//device_tree_overlay=iqaudio-dacplus/' /boot/config.txt
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
+            exit
+            ;;
+	    "Mamboberry")
+	    cp /opt/i2select/config.txt.orig /boot/config.txt
+	    cp /opt/i2select/unmute.orig /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.orig /etc/mpd.conf
+            sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
+            exit
+            ;;
+	    "Usb Dac Configuration (Default)")
+	    cp /opt/i2select/config.txt.orig /boot/config.txt
+	    cp /opt/i2select/unmute.orig /usr/bin/unmute
+            cp /opt/i2select/mpd.conf.orig /etc/mpd.conf
+	    echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
+            exit
+	    ;;
+	    "Update config.txt")
+	    echo -e "${red}Backing up existing config.txt...${NC}" 
+	    cp /boot/config.txt /boot/config.txt.bak
+	    echo -e "${red}Updating to latest config.txt from github...${NC}"
+	    wget https://raw.githubusercontent.com/archphile/recipe/master/files/config.txt -O /opt/i2select/config.txt.orig
+	    cp /opt/i2select/config.txt.orig /boot/config.txt
+	    exit
+	    ;;
+            "Quit")
+            break
+            ;;
+        *) echo Invalid option - Please choose 1-8;;
+    esac
+done
+
+
+
+

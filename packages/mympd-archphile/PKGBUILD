@@ -1,0 +1,48 @@
+# Maintainer: Mike Andonov <info@archphile.org>
+# Website: http://archphile.org
+# Based on official PKGBUILD made by:
+#
+# Maintainer: Juergen Mang <mail [at] jcgames [dot] de>
+# Website: https://github.com/jcorporation/myMPD
+# PKGBUILD Based on https://github.com/CultofRobots/archphile-custom/tree/master/mympd
+
+pkgname=mympd-archphile
+_pkgname=myMPD
+pkgver=6.3.0
+pkgrel=1
+pkgdesc="myMPD is a standalone and mobile friendly web mpdclient."
+arch=('armv7h' 'aarch64')
+url="http://github.org/jcorporation/myMPD"
+license=('GPL')
+depends=('openssl' 'libid3tag' 'flac')
+makedepends=('cmake')
+optdepends=('')
+provides=()
+conflicts=()
+replaces=()
+backup=('etc/webapps/mympd/mympd.conf')
+install=mympd-archphile.install
+source=("https://github.com/jcorporation/${_pkgname}/archive/v${pkgver}.tar.gz"
+	"mympd.conf")
+sha256sums=('6ade18e5b92693d6b9545c58bbdf7e9aa5eecdfdd844eac1470212755bef85ae'
+	    'f4db20c8a7be06b81057dff101902fe5d7d11a875907bce545121ffede9cb153')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit 1
+  install -d release
+  cd release || exit 1
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=RELEASE ..
+  make
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}/release"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644  ../../mympd.conf "$pkgdir/etc/webapps/mympd/mympd.conf"
+  mkdir -p "$pkgdir/var/lib/mympd/state"
+  chmod 700 "$pkgdir/var/lib/mympd/state"
+  echo "false" > "$pkgdir/var/lib/mympd/state/smartpls"
+  chmod 600 "$pkgdir/var/lib/mympd/state/smartpls"
+  echo "#FFF" > "$pkgdir/var/lib/mympd/state/bg_color"
+  chmod 600 "$pkgdir/var/lib/mympd/state/bg_color"
+}
