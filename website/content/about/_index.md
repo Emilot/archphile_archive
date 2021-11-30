@@ -41,6 +41,3 @@ This website was created using the following software:
 
 - [hugo framework](https://gohugo.io/)
 - [manis hugo theme](https://github.com/yursan9/manis-hugo-theme) 
-
-
-If you wish to support Archphile, please consider [donating](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDJDPBBTJDKZC&source=url)!
