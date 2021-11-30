@@ -49,10 +49,3 @@ The latest version is **1.19 beta** - codename Corona (17/04/2020) for the Raspb
 
 **.7z:** c99bfe5a1c39f3ab64bb757dcb1bb478  
 **.img:** 8d7c462361a288947e9ba23ab0b192fa
-
-
-<br>
-
-**Project  Support**
-
-If you wish to support Archphile, please consider [donating](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDJDPBBTJDKZC&source=url)!
