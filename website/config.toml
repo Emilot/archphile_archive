@@ -3,7 +3,7 @@ title = "Archphile"
 theme = "manis"
 
 # Copyright notice. Note: You can use HTML tag here
-copyright = "Copyleft 2014 - ∞ | M. A."
+copyright = "Copyleft 2014 - ∞ | M. G."
 pluralizeListTitles = true 
 
 # Minimum number of posts before paginate navigation show up
@@ -61,8 +61,8 @@ pygmentsUseClasses = true
 	highlightJsStyle = "ocean"
 
 	# Social Links
-	email = "info@archphile.org"
-	github = "https://github.com/archphile"
+	#email = "null@mgcloud.eu"
+	github = "https://github.com/ahtrahddis/archphile_archive"
 
 
 # Language Configuration
